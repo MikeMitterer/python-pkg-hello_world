@@ -13,11 +13,26 @@
     # Dieser Folder interessiert uns weiter nicht
     "Hello_World_Package.egg-info" >> .gitignore
 
-## Testing
-
 ## Documentation
 
+## Install
 
+## Usage
 
+## Testing
+Damit die Tests auf der cmdline laufen wird `pip install pytest` benötigt
 
+    pytest tests
 
+### requirement.txt
+Ist hier eigentlich nicht notwendig!
+
+    # Freeze des aktuellen Standes
+    pip freeze > requirements.txt
+
+    # Installation des Standes in requirements
+    pip install --use-deprecated=legacy-resolver -r requirements.txt
+
+    # Diese Variante hat noch (4.9.21) Probleme mit dem resolver
+    # Hängt...
+    pip install -r requirements.txt

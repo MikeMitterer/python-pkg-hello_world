@@ -24,12 +24,21 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
+extra_requirements = [
+    # TODO: put package extra_requirements here
+]
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name='Hello-World-Package',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     description="Hello World test package",
-    long_description=readme + '\n\n' + history,
+    # long_description=readme + '\n\n' + history,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author="Grant Williams",
     author_email='grant.williams2986@gmail.com',
     url='https://github.com/granwilliams/hello-world',
@@ -56,4 +65,5 @@ setup(
     ],
     test_suite='tests',
     tests_require=test_requirements,
+    extra_requirements=extra_requirements,
 )
