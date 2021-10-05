@@ -33,9 +33,15 @@
 
 ### From GitHub
 
+    # Version muss hier upgegradet werden!!!!!
     python -m pip install https://github.com/MikeMitterer/python-pkg-hello_world/blob/master/dist/Hello-World-Package-0.0.1.tar.gz?raw=true
 
 ## Usage
+
+    python
+    >>> import hello_world.cli
+    >>> hello_world.cli.hello()
+    >>> exit()
 
 ## Testing
 Damit die Tests auf der cmdline laufen wird `pip install pytest` benötigt
