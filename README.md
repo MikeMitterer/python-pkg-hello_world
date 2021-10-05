@@ -9,6 +9,9 @@
     # Generates 'dist'-Folder
     python3 setup.py bdist_wheel
 
+    # Generates 'dist'-Folder INKLUSIVE x.tar.gz-File!
+    python3 setup.py bdist_wheel sdist
+
     # Neben dem Dist-Folder wird auch der egg-info-Folder generiert
     # Dieser Folder interessiert uns weiter nicht
     "Hello_World_Package.egg-info" >> .gitignore
