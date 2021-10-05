@@ -16,7 +16,7 @@ import hello_world.cli
 class TestHelloWorld(unittest.TestCase):
 
     def setUp(self):
-        self.hello_message = "Hello, World!"
+        self.hello_message = "Hello, World! v2"
 
     def test_prints_hello_world(self):
         output = hello_world.cli.hello()
