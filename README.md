@@ -13,6 +13,17 @@
     # Dieser Folder interessiert uns weiter nicht
     "Hello_World_Package.egg-info" >> .gitignore
 
+### Manifest-File
+    
+    # Damit kann das Manifest überprüft werden.
+    pip install check-manifest
+
+    # Manifest wird erstellt
+    check-manifest --create
+
+    # Überprüfen den Manifest-Files
+    check-manifest
+
 ## Documentation
 
 ## Install

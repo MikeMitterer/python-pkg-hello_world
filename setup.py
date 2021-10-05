@@ -41,7 +41,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Grant Williams",
     author_email='grant.williams2986@gmail.com',
-    url='https://github.com/granwilliams/hello-world',
+    url='https://github.com/MikeMitterer/python-pkg-hello_world',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     entry_points={
         'console_scripts':[
