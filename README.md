@@ -17,6 +17,10 @@
 
 ## Install
 
+### From GitHub
+
+    python -m pip install https://github.com/MikeMitterer/python-pkg-hello_world.git
+
 ## Usage
 
 ## Testing
