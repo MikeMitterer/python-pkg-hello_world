@@ -1,5 +1,15 @@
 # Hello World Package
 
+## Use as Template
+
+Kopieren in das neue Verzeichis
+
+   - `rm -rf .git venv .idea build dist`
+   - `find . -name "__pycache__" -exec rm -rf {} \;`
+
+Umbenennen des Basis-Verzeichnisses (`hello_world`) in den neuen, gewünschen, PackageName (e.g. wze)   
+
+
 ## Generate Package
 > [Publishing (Perfect) Python Packages on PyPi](https://www.youtube.com/watch?v=GIF3LaRqgXo&t=4s)
 
