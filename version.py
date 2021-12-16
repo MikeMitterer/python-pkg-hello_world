@@ -20,8 +20,8 @@ def get_git_version(abbrev=1) -> str:
     Gibt die Version zurück, die mit git tag vX.Y gesetzt wurde.
     Wird keine Version gefunden wird eine Exception geworfen.
 
-    :param abbrev:
-    :return:
+    :param abbrev: Anzahl der verwendeten Zeichen der hexadezimalen Commit-ID
+    :return: Versions String im Format <Tag>.<Commits> bzw. <Tag>.dev<Commits>
     """
 
     if not is_git_initialized():
@@ -55,20 +55,29 @@ def call_git_describe(abbrev) -> str:
     Entspricht im Prinzip dem Aufruf von
         git describe --tags --abbrev=7
 
-    :param abbrev:
-    :return:
+    Sind keine Tags gesetzt, wird Tag 0.0 verwendet und die Anzahl der Commits ermittelt.
+        git rev-list --count HEAD
+
+    :param abbrev: Anzahl der verwendeten Zeichen der hexadezimalen Commit-ID
+    :return: Versions String im Format <Tag>.<Commits> bzw. <Tag>.dev<Commits>
     """
 
     process = Popen(['git', 'describe', '--tags', '--abbrev=%d' % abbrev], stdout=PIPE, stderr=PIPE)
     process.stderr.close()
 
-    # line = process.stdout.readlines()[0]
     line = process.stdout.readline()
+
     if not line:
-        raise UserWarning(
-            colored("\n\tCould not determine your git-version!\n"
-                    "\tNo git tags available!'", 'red')
-        )
+        process = Popen(['git', 'rev-list', '--count', 'HEAD'], stdout=PIPE, stderr=PIPE)
+        process.stderr.close()
+
+        commits = process.stdout.readline()
+
+        if not commits:
+            return f'0.0.dev0'
+
+        commits = commits.strip().decode()
+        return f'0.0.dev{commits}'
 
     # v0.2
     line = line.strip().decode()
