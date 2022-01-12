@@ -44,14 +44,7 @@ help:
 	@echo
 
 colors: ## show all the colors
-	@echo "${BLACK}BLACK${RESET}"
-	@echo "${RED}RED${RESET}"
-	@echo "${GREEN}GREEN${RESET}"
-	@echo "${YELLOW}YELLOW${RESET}"
-	@echo "${LIGHTPURPLE}LIGHTPURPLE${RESET}"
-	@echo "${PURPLE}PURPLE${RESET}"
-	@echo "${BLUE}BLUE${RESET}"
-	@echo "${WHITE}WHITE${RESET}"
+	$(call print_colours)
 
 init init39 init310:
 	@if [ ! -d ".git" ]; then git init; else echo "${RED}GIT already initialized!${RESET}"; fi
