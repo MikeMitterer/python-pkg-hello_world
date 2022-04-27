@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 # BUILDDIR      = _build
 
-.PHONY: help colors init init39 init310 clean test freeze build deploy
+.PHONY: help colors init init39 init310 clean tests freeze build deploy
 
 .DEFAULT_GOAL := help
 
@@ -45,17 +45,11 @@ help:
 	@echo "${BLUE}Hints:${NC}"
 	@echo "    Make sure the right python environment is activated!"
 	@echo "     - '${YELLOW}activate d39 | activate${NC}' on cmdline"
+	@echo "    '${YELLOW}pip3 install -e .${NC}' to install 'HelloWorld' for testing"
 	@echo
 
 colors: ## show all the colors
-	@echo "${BLACK}BLACK${RESET}"
-	@echo "${RED}RED${RESET}"
-	@echo "${GREEN}GREEN${RESET}"
-	@echo "${YELLOW}YELLOW${RESET}"
-	@echo "${LIGHTPURPLE}LIGHTPURPLE${RESET}"
-	@echo "${PURPLE}PURPLE${RESET}"
-	@echo "${BLUE}BLUE${RESET}"
-	@echo "${WHITE}WHITE${RESET}"
+	$(call print_colours)
 
 init init39 init310:
 	@if [ ! -d ".git" ]; then git init; else echo "${RED}GIT already initialized!${RESET}"; fi
@@ -84,7 +78,7 @@ freeze:
 clean:
 	rm -rf build dist
 
-test:
+tests:
 	pytest --verbosity=1 -W ignore::DeprecationWarning --color=yes tests
 
 build:

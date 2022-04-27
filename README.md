@@ -2,13 +2,13 @@
 
 ## Use as Template
 
-Kopieren in das neue Verzeichis
+1. Kopieren in das neue Verzeichis
 
    - `rm -rf .git venv .idea build dist`
    - `find . -name "__pycache__" -exec rm -rf {} \;`
 
-Umbenennen des Basis-Verzeichnisses (`hello_world`) in den neuen, gewünschen, PackageName (e.g. wze)   
-
+2. Umbenennen des Basis-Verzeichnisses (`hello_world`) in den neuen, gewünschen, PackageName (e.g. wze)   
+3. Name, Description, Git-URL und Entry-points im setup.py anpassen
 
 ## Generate Package
 > [Publishing (Perfect) Python Packages on PyPi](https://www.youtube.com/watch?v=GIF3LaRqgXo&t=4s)
