@@ -36,7 +36,7 @@ help:
 	@echo "    ${YELLOW}init | init39 | init310   ${GREEN}git init + hint for environment setup${RESET}"
 	@echo
 	@echo "    ${YELLOW}clean                     ${GREEN}Cleans up all unnecessary files and dirs${RESET}"
-	@echo "    ${YELLOW}test                      ${GREEN}Runs all tests in 'tests' folder${RESET}"
+	@echo "    ${YELLOW}tests                     ${GREEN}Runs all tests in 'tests' folder${RESET}"
 	@echo "    ${YELLOW}freeze                    ${GREEN}Alle notwendigen packages werden in 'requirements.txt' gesammelt${RESET}"
 	@echo "    ${YELLOW}build                     ${GREEN}Build your setup${RESET}"
 	@echo
