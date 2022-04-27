@@ -4,34 +4,11 @@
 # You can set these variables from the command line.
 # BUILDDIR      = _build
 
-.PHONY: help colors init init39 init310 clean freeze build deploy
+.PHONY: help colors init init39 init310 clean test freeze build deploy
 
 .DEFAULT_GOAL := help
 
-# Define standard colors
-# Weitere Infos:
-#	https://gist.github.com/rsperl/d2dfe88a520968fbc1f49db0a29345b9
-ifneq (,$(findstring xterm,${TERM}))
-	BLACK        := $(shell tput -Txterm setaf 0)
-	RED          := $(shell tput -Txterm setaf 1)
-	GREEN        := $(shell tput -Txterm setaf 2)
-	YELLOW       := $(shell tput -Txterm setaf 3)
-	LIGHTPURPLE  := $(shell tput -Txterm setaf 4)
-	PURPLE       := $(shell tput -Txterm setaf 5)
-	BLUE         := $(shell tput -Txterm setaf 6)
-	WHITE        := $(shell tput -Txterm setaf 7)
-	RESET := $(shell tput -Txterm sgr0)
-else
-	BLACK        := ""
-	RED          := ""
-	GREEN        := ""
-	YELLOW       := ""
-	LIGHTPURPLE  := ""
-	PURPLE       := ""
-	BLUE         := ""
-	WHITE        := ""
-	RESET        := ""
-endif
+include ${DEV_MAKE}/colours.mk
 
 GIT_INIT := $(shell test -d ".git")
 BASE := $(shell basename $(CURDIR))
@@ -59,10 +36,15 @@ help:
 	@echo "    ${YELLOW}init | init39 | init310   ${GREEN}git init + hint for environment setup${RESET}"
 	@echo
 	@echo "    ${YELLOW}clean                     ${GREEN}Cleans up all unnecessary files and dirs${RESET}"
+	@echo "    ${YELLOW}test                      ${GREEN}Runs all tests in 'tests' folder${RESET}"
 	@echo "    ${YELLOW}freeze                    ${GREEN}Alle notwendigen packages werden in 'requirements.txt' gesammelt${RESET}"
 	@echo "    ${YELLOW}build                     ${GREEN}Build your setup${RESET}"
 	@echo
 	@echo "    ${YELLOW}deploy                    ${GREEN}Package wird gebaut. ${WHITE}'git push' muss per Hand ausgeführt werden!${RESET}"
+	@echo
+	@echo "${BLUE}Hints:${NC}"
+	@echo "    Make sure the right python environment is activated!"
+	@echo "     - '${YELLOW}activate d39 | activate${NC}' on cmdline"
 	@echo
 
 colors: ## show all the colors
@@ -101,6 +83,9 @@ freeze:
 
 clean:
 	rm -rf build dist
+
+test:
+	pytest --verbosity=1 -W ignore::DeprecationWarning --color=yes tests
 
 build:
 	python3 setup.py bdist_wheel sdist
