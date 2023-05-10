@@ -34,7 +34,7 @@ pipeline {
                     ansiColor('xterm') {
                         // sh './gradlew preparePip'
                         sh '. ./.vHelloWorld/bin/activate'
-                        sh '/.vHelloWorld/bin/python3 -m pip install install -r requirements.txt'
+                        sh '/.vHelloWorld/bin/python3 -m pip install -r requirements.txt'
                     }
                 }
             }
