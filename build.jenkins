@@ -1,7 +1,23 @@
 pipeline {
     agent { label 'linux' }
-    
+
+    parameters {
+            booleanParam(defaultValue: false, description: 'Fresh install (remove .vHelloWorld)', name: 'FRESH_INSTALL')
+    }
+
     stages {
+        stage('Preparation') {
+            when { expression { params.FRESH_INSTALL } }
+            steps {
+                timeout(time: 15, unit: 'MINUTES') {
+                    ansiColor('xterm') {
+                        // Wenn das .vHelloWorld nicht da ist, wird bei 'Dependencies' ein neues erstellt
+                        // bzw. die requirements.txt installiert
+                        sh 'rm -rf .vHelloWorld'
+                    }
+                }
+            }
+        }
         stage('Environment') {
             when { not { expression { return fileExists ('.vHelloWorld') } } }
             steps {
