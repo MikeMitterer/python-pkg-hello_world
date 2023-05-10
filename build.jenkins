@@ -41,8 +41,7 @@ pipeline {
             steps {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
-                        sh '. ./.vHelloWorld/bin/activate'
-                        sh './.vHelloWorld/bin/pytest -v tests/unit'
+                        sh '. ./.vHelloWorld/bin/activate && pytest -v tests/unit'
                     }
                 }
             }
@@ -50,8 +49,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 ansiColor('xterm') {
-                    sh '. ./.vHelloWorld/bin/activate'
-                    sh 'make deploy'
+                    sh '. ./.vHelloWorld/bin/activate && make deploy'
                 }
             }
         }
