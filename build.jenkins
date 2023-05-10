@@ -18,7 +18,7 @@ pipeline {
                     ansiColor('xterm') {
                         // sh './gradlew preparePip'
                         sh '. ./.vHelloWorld/bin/activate'
-                        sh 'pip3 install -r requirements.txt'
+                        sh '/.vHelloWorld/bin/python3 -m pip install install -r requirements.txt'
                     }
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
                         sh '. ./.vHelloWorld/bin/activate'
-                        sh 'pytest -v tests/unit'
+                        sh '/.vHelloWorld/bin/pytest -v tests/unit'
                     }
                 }
             }
