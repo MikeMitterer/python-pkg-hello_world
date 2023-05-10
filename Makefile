@@ -84,7 +84,7 @@ tests:
 build:
 	python3 setup.py bdist_wheel sdist
 
-deploy: clean freeze build
+deploy: clean build
 
 all: deploy
 
