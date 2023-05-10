@@ -22,4 +22,5 @@ toml==0.10.2
 typing_extensions==4.0.1
 wrapt==1.13.3
 
--e git+https://github.com/MikeMitterer/python-pkg-hello_world.git@7225c9ac0e78ceac234eaf992368f67144eb15d1#egg=Hello_World_Package
+# -e git+https://github.com/MikeMitterer/python-pkg-hello_world.git@7225c9ac0e78ceac234eaf992368f67144eb15d1#egg=Hello_World_Package
+git+https://github.com/MikeMitterer/python-pkg-hello_world.git
