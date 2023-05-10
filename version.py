@@ -12,7 +12,6 @@ __all__ = 'get_git_version'
 
 import os.path
 from subprocess import Popen, PIPE
-from termcolor import colored
 
 
 def get_git_version(abbrev=1) -> str:
@@ -26,8 +25,8 @@ def get_git_version(abbrev=1) -> str:
 
     if not is_git_initialized():
         raise UserWarning(
-            colored("\n\tCould not determine your git-version!\n"
-                    "\tGit Repo is not initialized!", 'red')
+            ("\n\tCould not determine your git-version!\n"
+             "\tGit Repo is not initialized!", 'red')
         )
 
     try:
@@ -38,8 +37,8 @@ def get_git_version(abbrev=1) -> str:
         raise u
     except Exception:
         raise UserWarning(
-            colored("\n\tCould not determine your git-version!\n"
-                    "\tHint: check with 'git describe --tags --abbrev=7'", 'red')
+            ("\n\tCould not determine your git-version!\n"
+             "\tHint: check with 'git describe --tags --abbrev=7'", 'red')
         )
 
     # Finally, return the current version.
