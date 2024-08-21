@@ -23,7 +23,7 @@ pipeline {
             steps {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
-                        sh 'python3.10 -m venv .vHelloWorld'
+                        sh 'python3 -m venv .vHelloWorld'
                     }
                 }
             }
