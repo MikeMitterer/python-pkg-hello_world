@@ -13,8 +13,11 @@
 ## Generate Package
 > [Publishing (Perfect) Python Packages on PyPi](https://www.youtube.com/watch?v=GIF3LaRqgXo&t=4s)
 
+    # Create VENV
+    python3 -m venv .vHelloWorld
+
     # Activate VENV
-    source ./venv/bin/activate
+    source ./.vHelloWorld/bin/activate
 
     # Generates 'dist'-Folder
     python3 setup.py bdist_wheel

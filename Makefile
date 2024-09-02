@@ -14,8 +14,8 @@ GIT_INIT := $(shell test -d ".git")
 BASE := $(shell basename $(CURDIR))
 GIT_EXISTS=$(shell [ -d .git ] && echo 1 || echo 0 )
 
-init init39: ENVIRONMENT := "d39"
 init310: ENVIRONMENT := "d310"
+init init312: ENVIRONMENT := "d312"
 
 INIT_COMMANDS=\
 	"    activate ${ENVIRONMENT} &&"\
@@ -33,7 +33,7 @@ help:
 	@echo "    ${YELLOW}help                      ${GREEN}This help message${RESET}"
 	@echo "    ${YELLOW}colors                    ${GREEN}For testing only - show the available colors${RESET}"
 	@echo
-	@echo "    ${YELLOW}init | init39 | init310   ${GREEN}git init + hint for environment setup${RESET}"
+	@echo "    ${YELLOW}init | init310 | init312  ${GREEN}git init + hint for environment setup${RESET}"
 	@echo
 	@echo "    ${YELLOW}clean                     ${GREEN}Cleans up all unnecessary files and dirs${RESET}"
 	@echo "    ${YELLOW}tests                     ${GREEN}Runs all tests in 'tests' folder${RESET}"
@@ -51,7 +51,7 @@ help:
 colors: ## show all the colors
 	$(call print_colours)
 
-init init39 init310:
+init init39 init310 init312:
 	@if [ ! -d ".git" ]; then git init; else echo "${RED}GIT already initialized!${RESET}"; fi
 
 	@echo "${NAME}"
